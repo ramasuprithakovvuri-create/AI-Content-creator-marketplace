@@ -12,13 +12,6 @@ command text inside the code blocks; do not type PowerShell prompts such as
 npm.cmd install
 ```
 
-Create `.env` only if it does not already exist (this preserves any API key you
-have configured):
-
-```powershell
-if (-not (Test-Path .env)) { Copy-Item .env.example .env }
-```
-
 Then start the app:
 
 ```powershell
@@ -38,7 +31,7 @@ campaigns and their own engagements. Public creator listings use saved creator
 profiles; portfolio work appears when a creator adds it.
 
 The brief builder works without an API key using its local fallback. To enable
-Gemini-generated briefs, add your key to `.env`:
+Gemini-generated briefs, create a local `.env` file and add your key:
 
 ```dotenv
 GEMINI_API_KEY=your-gemini-api-key
