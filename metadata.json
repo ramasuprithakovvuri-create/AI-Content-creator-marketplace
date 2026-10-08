@@ -1,0 +1,6 @@
+{
+  "name": "Kampus AI Creator Marketplace",
+  "description": "AI-native marketplace connecting enterprise brands and creative agencies with verified AI filmmakers, animators, and generative content creators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
