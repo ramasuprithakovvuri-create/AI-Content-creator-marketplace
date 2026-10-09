@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { User, UserRole } from '../types';
 import { OptionPicker } from './BriefOptions';
 import { 
@@ -64,6 +64,37 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   const [tools, setTools] = useState<string[]>([]);
   const [specialization, setSpecialization] = useState('');
   const [hourlyRate, setHourlyRate] = useState<number | ''>('');
+
+  const resetFormState = () => {
+    setMode(initialMode);
+    setLoginEmail('');
+    setLoginPassword('');
+    setLoginError('');
+    setName('');
+    setAge('');
+    setGender('');
+    setMobileNumber('');
+    setEmail('');
+    setPassword('');
+    setRole('');
+    setCompanyName('');
+    setBrandName('');
+    setIndustry('');
+    setPurpose('');
+    setSelectedFeatures([]);
+    setHeadline('');
+    setBio('');
+    setContentTypes([]);
+    setTools([]);
+    setSpecialization('');
+    setHourlyRate('');
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      resetFormState();
+    }
+  }, [isOpen, initialMode]);
 
   if (!isOpen) return null;
 
@@ -191,7 +222,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) {
+          onClose();
+        }
+      }}
+    >
       <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-xl border border-zinc-800 bg-zinc-950 p-6 shadow-2xl sm:p-8">
         
         {/* Close Button */}
